@@ -9,11 +9,25 @@ on:
       - main
 
 jobs:
-  cypress-tests:
+  cypress-run:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - name: Install dependencies
-        run: npm install
-      - name: Hourly Run
-        run: npx cypress run first_spec.cy.js
+        run: npm ci
+
+      - name: Install Cypress
+        run: |
+          npm install cypress
+          chmod +x ./node_modules/.bin/cypress
+
+      - name: Run Cypress tests
+        run: DEBUG=cypress:* npx cypress run
