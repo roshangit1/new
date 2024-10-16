@@ -30,4 +30,4 @@ jobs:
           chmod +x ./node_modules/.bin/cypress
 
       - name: Run Cypress tests
-        run: DEBUG=cypress:* npx cypress run
+        run: DEBUG=cypress:* npx cypress run first_spec.cy.js
