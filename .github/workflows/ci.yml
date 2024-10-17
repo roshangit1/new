@@ -27,7 +27,6 @@ jobs:
       - name: Install Cypress
         run: |
           npm install cypress
-          chmod +x ./node_modules/.bin/cypress
 
       - name: Run Cypress tests
         run: npx cypress run first_spec.cy.js
